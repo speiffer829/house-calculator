@@ -1,0 +1,19 @@
+/* Write your global styles here, in PostCSS syntax */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base{
+
+	@font-face{
+		font-family: 'Mirage';
+		font-weight: 800;
+		src: url('fonts/Mirage/MirageBlack.otf') format('otf');
+		src: url('fonts/Mirage/MirageBlack.woff') format('woff');
+		src: url('fonts/Mirage/MirageBlack.woff2') format('woff2');
+	}
+	
+	.wrap{
+		@apply max-w-5xl w-full mx-auto py-8 px-4
+	}
+}
