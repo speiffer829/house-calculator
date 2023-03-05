@@ -2,9 +2,19 @@ const config = {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 
 	theme: {
-		extend: {},
+		extend: {
+			colors: {
+				primary: '#E9C376',
+				secondary: '#DFB8AC'
+			}
+		},
+		backgroundImage: {
+			brick: 'url(/brick.jpg)'
+		},
 		fontFamily: {
-			serif: ['Mirage', 'serif']
+			serif: ['Mirage', 'serif'],
+			fancy: ['BrittanySignature', 'serif'],
+			sans: ['Nunito', 'sans-serif']
 		}
 	},
 

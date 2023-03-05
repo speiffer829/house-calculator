@@ -7,13 +7,49 @@
 
 	@font-face{
 		font-family: 'Mirage';
-		font-weight: 800;
-		src: url('fonts/Mirage/MirageBlack.otf') format('otf');
-		src: url('fonts/Mirage/MirageBlack.woff') format('woff');
-		src: url('fonts/Mirage/MirageBlack.woff2') format('woff2');
+		font-weight: 900;
+		src: url('/fonts/Mirage/MirageBlack.otf') format('otf');
+		src: url('/fonts/Mirage/MirageBlack.woff2') format('woff2');
+	}
+	@font-face{
+		font-family: 'Mirage';
+		font-weight: 700;
+		src: url('/fonts/Mirage/MirageBold.otf') format('otf');
+		src: url('/fonts/Mirage/MirageBold.woff2') format('woff2');
+	}
+	@font-face{
+		font-family: 'Mirage';
+		font-weight: 500;
+		src: url('/fonts/Mirage/MirageMedium.otf') format('otf');
+		src: url('/fonts/Mirage/MirageMedium.woff2') format('woff2');
+	}
+	@font-face{
+		font-family: 'Mirage';
+		font-weight: 400;
+		src: url('/fonts/Mirage/MirageRegular.otf') format('otf');
+		src: url('/fonts/Mirage/MirageRegular.woff2') format('woff2');
+	}
+	@font-face{
+		font-family: 'Mirage';
+		font-weight: 300;
+		src: url('/fonts/Mirage/MirageThin.otf') format('otf');
+		src: url('/fonts/Mirage/MirageThin.woff2') format('woff2');
+	}
+	@font-face{
+		font-family: 'BrittanySignature';
+		src: url('/fonts/BrittanySignature/BrittanySignature.ttf') format('ttf');
+		src: url('/fonts/BrittanySignature/BrittanySignature.woff2') format('woff2');
+	}
+
+	body{
+		@apply font-medium bg-cover bg-brick font-sans;
 	}
 	
 	.wrap{
 		@apply max-w-5xl w-full mx-auto py-8 px-4
+	}
+
+	::selection{
+		@apply bg-primary bg-opacity-50 text-black;
 	}
 }
