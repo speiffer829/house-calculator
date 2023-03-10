@@ -12,6 +12,10 @@ export interface SeriesType {
 	realtime_start: string;
 	sort_order: string;
 	units: string;
+	chart_data: {
+		data: string;
+		value: number;
+	};
 }
 
 export interface ObservationType {
@@ -23,4 +27,5 @@ export interface ObservationType {
 
 export interface ResultType {
 	principal_and_interest: string;
+	property_tax: string;
 }
