@@ -20,3 +20,7 @@ export interface ObservationType {
 	realtime_start: string;
 	value: string;
 }
+
+export interface ResultType {
+	principal_and_interest: string;
+}

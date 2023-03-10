@@ -49,6 +49,24 @@
 		@apply max-w-5xl w-full mx-auto py-8 px-4
 	}
 
+	.input-contain{
+		@apply w-full;
+
+		label{
+			@apply flex items-center gap-2 font-black;
+
+			.dot{
+				width: 14px;
+				height: 14px;
+				@apply  rounded-full;
+			}
+		}
+
+		input{
+			@apply border-2 border-slate-400 text-base py-2 px-4 focus:border-secondary focus:bg-secondary focus:bg-opacity-50 block;
+		}
+	}
+
 	::selection{
 		@apply bg-primary bg-opacity-50 text-black;
 	}
