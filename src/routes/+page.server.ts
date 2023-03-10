@@ -11,14 +11,13 @@ export const load = (async () => {
 	const chart_data = {
 		labels: stuff.observations
 			.map((i) => i.date)
-			.slice(Math.max(stuff.observations.length - 104, 1)),
+			.slice(Math.max(stuff.observations.length - 52, 1)),
 		datasets: [
 			{
 				label: 'Interest Rate',
 				fill: true,
 				lineTension: 0.3,
-				backgroundColor: 'rgba(225, 204,230, .3)',
-				borderColor: 'rgb(205, 130, 158)',
+				borderColor: '#DFB8AC',
 				borderCapStyle: 'butt',
 				borderDash: [],
 				borderDashOffset: 0.0,
@@ -34,7 +33,7 @@ export const load = (async () => {
 				pointHitRadius: 10,
 				data: stuff.observations
 					.map((i) => parseFloat(i.value))
-					.slice(Math.max(stuff.observations.length - 104, 1))
+					.slice(Math.max(stuff.observations.length - 52, 1))
 			}
 		]
 	};

@@ -1,28 +1,14 @@
 <script lang="ts">
+	import Chart from '$lib/Chart.svelte';
 	import Input from '$lib/Input.svelte';
+	import Stats from '$lib/Stats.svelte';
 	import type { ResultType } from '$lib/types';
 	import { onMount } from 'svelte';
 	import type { PageData } from './$types';
-	import { Line } from 'svelte-chartjs';
-	import {
-		Chart as ChartJS,
-		Title,
-		Tooltip,
-		Legend,
-		LineElement,
-		LinearScale,
-		PointElement,
-		CategoryScale
-	} from 'chart.js';
-
-	ChartJS.register(Title, Tooltip, Legend, LineElement, LinearScale, PointElement, CategoryScale);
 
 	export let data: PageData;
-	console.log(data);
 
 	const numberize = (value) => parseFloat(value.replace(/\D/g, ''));
-
-	$: latest = data.observations.at(-1);
 
 	let home_price = '$350,000';
 	let down_payment = '$20,000';
@@ -75,13 +61,9 @@
 		</h1>
 	</header>
 	<main class="bg-white shadow-lg p-5">
-		<h2 class="text-3xl font-black">
-			<span class="block text-base font-sans">Latest Rate:</span>
-			<span class="font-serif text-5xl">{latest?.value}<sup class="">%</sup></span>
-		</h2>
-		<p class="text-neutral-400 text-sm">As of {latest?.date}</p>
+		<Stats {data} />
 
-		<Line data={data.chart_data} />
+		<Chart data={data.chart_data} />
 
 		<div class="grid md:grid-cols-3 lg:grid-cols-4 mt-9">
 			<form class="block py-3">

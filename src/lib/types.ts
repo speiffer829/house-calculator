@@ -1,3 +1,5 @@
+import type { ChartData, Point } from 'chart.js';
+
 export interface SeriesType {
 	count: number;
 	file_type: string;
@@ -12,10 +14,7 @@ export interface SeriesType {
 	realtime_start: string;
 	sort_order: string;
 	units: string;
-	chart_data: {
-		data: string;
-		value: number;
-	};
+	chart_data: ChartData<'line', (number | Point)[], unknown>;
 }
 
 export interface ObservationType {
