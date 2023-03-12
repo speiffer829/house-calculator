@@ -39,14 +39,16 @@
 	<div class="text-3xl font-black flex-1 flex justify-center basis-full sm:basis-0">
 		<h4>
 			<span class="block text-base font-sans mb-2">Latest Rate:</span>
-			<span class="font-serif text-4xl">{latest?.value}<sup class="">%</sup></span>
+			<span class="font-serif text-4xl font-black">{latest?.value}<sup class="">%</sup></span>
 			<span class="block text-neutral-400 text-sm font-medium">As of {latest?.date}</span>
 		</h4>
 	</div>
 	<div class="text-3xl font-black sm:border-l-2 border-black  flex-1 flex justify-center">
 		<h4>
 			<span class="block text-sm sm:text-base font-sans mb-2">Previous Rate:</span>
-			<span class="font-serif text-2xl sm:text-4xl">{previous?.value}<sup class="">%</sup></span>
+			<span class="font-serif text-2xl sm:text-4xl font-black"
+				>{previous?.value}<sup class="">%</sup></span
+			>
 			<span class="block text-neutral-400 text-xs sm:text-sm font-medium"
 				>As of {previous?.date}</span
 			>
@@ -67,7 +69,7 @@
 				{:else if trend.direction === 'down'}
 					<ArrowDown size={25} />
 				{/if}
-				<p class="font-serif text-2xl sm:text-4xl">
+				<p class="font-serif text-2xl sm:text-4xl font-black">
 					{trend?.difference}<sup class="">%</sup>
 				</p>
 			</div>

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Chart from '$lib/Chart.svelte';
+	import Donut from '$lib/Donut.svelte';
 	import Input from '$lib/Input.svelte';
 	import Stats from '$lib/Stats.svelte';
 	import type { ResultType } from '$lib/types';
@@ -85,8 +86,13 @@
 			</form>
 
 			<section class="md:col-span-2 lg:col-span-3">
-				<h2 class="text-4xl font-serif font-black">{results?.principal_and_interest}</h2>
-				<h2 class="text-4xl font-serif font-black">{results?.property_tax}</h2>
+				<div class="flex">
+					<div>
+						<h2 class="text-4xl font-serif font-black">{results?.principal_and_interest}</h2>
+						<h2 class="text-4xl font-serif font-black">{results?.property_tax}</h2>
+					</div>
+					<Donut {results} {numberize} />
+				</div>
 			</section>
 		</div>
 	</main>
