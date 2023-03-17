@@ -1,55 +1,75 @@
 <script lang="ts">
-	import { Doughnut } from 'svelte-chartjs';
-	import {
-		Chart as ChartJS,
-		Title,
-		Tooltip,
-		Legend,
-		LineElement,
-		LinearScale,
-		PointElement,
-		CategoryScale,
-		ArcElement
-	} from 'chart.js';
+	import 'chartist/dist/index.css';
+	import { PieChart } from 'chartist';
+	import { onMount } from 'svelte';
+	import type { ResultType } from './types';
 
-	ChartJS.register(
-		Title,
-		Tooltip,
-		Legend,
-		LineElement,
-		LinearScale,
-		PointElement,
-		CategoryScale,
-		ArcElement
-	);
+	let chart;
+	export let numberize, results: ResultType;
+	$: update_chart(results);
 
-	export let results, numberize;
+	function update_chart(results: ResultType) {
+		if (!chart) return;
+		const new_stuff = {
+			series: [
+				{
+					value: numberize(results.principal_and_interest),
+					className: 'stroke-blue-400',
+					name: 'Principal & Interest'
+				},
+				{
+					value: numberize(results.property_tax),
+					className: 'stroke-green-400',
+					name: 'Property Tax'
+				},
+				{ value: numberize(results.pmi), className: 'stroke-purple-400', name: 'PMI' },
+				{ value: 0, className: 'stroke-rose-400', name: 'Homeowners Insurance' },
+				{ value: 0, className: 'stroke-amber-400', name: 'HOA' }
+			]
+		};
+		chart.update(new_stuff);
+	}
 
-	const data = {
-		labels: ['Principal & Interest', 'Property Tax', 'Homeowners Insurance', 'PMI', 'HOA'],
-		datasets: [
+	// TODO grab colors from chart.js version
+
+	onMount(() => {
+		chart = new PieChart(
+			'#chart',
 			{
-				data: [
-					numberize(results.principal_and_interest),
-					numberize(results.property_tax),
-					500,
-					500,
-					300
-				],
-				backgroundColor: ['#666EAC', '#3ACB98', '#DFB8AC', '#E9C376', '#2F4858']
+				series: [
+					{
+						value: numberize(results.principal_and_interest),
+						className: 'stroke-blue-400',
+						name: 'Principal & Interest'
+					},
+					{
+						value: numberize(results.property_tax),
+						className: 'stroke-green-400',
+						name: 'Property Tax'
+					},
+					{ value: numberize(results.pmi), className: 'stroke-purple-400', name: 'PMI' },
+					{ value: 0, className: 'stroke-rose-400', name: 'Homeowners Insurance' },
+					{ value: 0, className: 'stroke-amber-400', name: 'HOA' }
+				]
+			},
+			{
+				donut: true,
+				startAngle: 270,
+				donutWidth: 50,
+				showLabel: false
 			}
-		]
-	};
+		);
+	});
 </script>
 
-<Doughnut
-	{data}
-	options={{
-		responsive: true,
-		plugins: {
-			legend: {
-				display: false
-			}
-		}
-	}}
-/>
+<div id="chart" class="flex-1" />
+
+<style lang="postcss">
+	#chart {
+		height: 300px;
+	}
+
+	:global(.principal_and_interest .ct-slice-donut) {
+		@apply stroke-secondary;
+	}
+</style>

@@ -27,4 +27,7 @@ export interface ObservationType {
 export interface ResultType {
 	principal_and_interest: string;
 	property_tax: string;
+	pmi: string;
+	homeowners_insurance: string;
+	hoa: string;
 }

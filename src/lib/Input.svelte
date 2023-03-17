@@ -6,7 +6,7 @@
 	export let value = '';
 	export let placeholder: string = '';
 	export let disabled: boolean = false;
-	export let label: string;
+	export let label: string = null;
 	export let format_number: boolean = false;
 	export let type = 'text';
 	export let other = {};
@@ -40,12 +40,14 @@
 </script>
 
 <div class="input-contain {classes} w-full">
-	<label for={name}>
-		{#if dot}
-			<span class="dot {dot}" />
-		{/if}
-		<span>{label}</span>
-	</label>
+	{#if label}
+		<label for={name}>
+			{#if dot}
+				<span class="dot {dot}" />
+			{/if}
+			<span>{label}</span>
+		</label>
+	{/if}
 	<div class="relative" class:percent>
 		<input
 			id={name}
