@@ -71,7 +71,7 @@
 
 		<Chart data={data.chart_data} />
 
-		<div class="grid md:grid-cols-3 lg:grid-cols-4 mt-9">
+		<!-- <div class="grid md:grid-cols-3 lg:grid-cols-4 mt-9">
 			<form class="block py-3">
 				<Input bind:value={home_price} label="Home Price" format_number on:input={do_some_math} />
 				<Input
@@ -124,7 +124,7 @@
 					</div>
 				</div>
 			</section>
-		</div>
+		</div> -->
 	</main>
 </div>
 
