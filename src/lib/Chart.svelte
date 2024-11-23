@@ -13,7 +13,7 @@
 
 	ChartJS.register(Title, Tooltip, Legend, LineElement, LinearScale, PointElement, CategoryScale);
 
-	export let data;
+	let { data } = $props();
 </script>
 
 <Line {data} />

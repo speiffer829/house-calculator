@@ -7,7 +7,11 @@
 	import { onMount } from 'svelte';
 	import type { PageData } from './$types';
 
-	export let data: PageData;
+	interface Props {
+		data: PageData;
+	}
+
+	let { data }: Props = $props();
 
 	const numberize = (value) => parseFloat(value.replace(/\D/g, ''));
 	const dollarize = (value) =>
@@ -22,7 +26,7 @@
 	let down_payment = '$20,000';
 	let interest_rate = data.observations.at(-1).value;
 
-	$: principal_loan_amount = numberize(home_price) - numberize(down_payment);
+	let principal_loan_amount = $derived(numberize(home_price) - numberize(down_payment));
 
 	let results: ResultType = {
 		principal_and_interest: '$0.00',

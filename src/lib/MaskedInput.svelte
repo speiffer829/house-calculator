@@ -1,8 +1,7 @@
-<script>
+<script lang="ts">
 	import { tick } from 'svelte';
 
-	export let mask;
-	export let value;
+	let { mask, value = $bindable() } = $props();
 
 	function maskValue(value) {
 		let masked = '';
@@ -122,4 +121,4 @@
 	}
 </script>
 
-<input type="text" maxLength={mask.length} on:input={handleInput} placeholder={mask} {value} />
+<input type="text" maxLength={mask.length} oninput={handleInput} placeholder={mask} {value} />

@@ -1,17 +1,15 @@
 <script lang="ts">
+	import { run } from 'svelte/legacy';
+
 	import { ArrowUp, ArrowDown } from 'lucide-svelte';
 
-	export let data;
+	let { data } = $props();
 
-	$: latest = data.observations.at(-1);
-	$: previous = data.observations.at(-2);
-	$: get_trend(latest.value, previous.value);
-	let trend = {
+	let trend = $state({
 		direction: '',
 		difference: 0.0
-	};
+	});
 
-	$: console.log(trend);
 
 	function get_trend(newer, old) {
 		if (newer > old) {
@@ -33,6 +31,14 @@
 			};
 		}
 	}
+	let latest = $derived(data.observations.at(-1));
+	let previous = $derived(data.observations.at(-2));
+	run(() => {
+		get_trend(latest.value, previous.value);
+	});
+	run(() => {
+		console.log(trend);
+	});
 </script>
 
 <div class="flex flex-wrap border-y-2 border-black px-2 py-4 gap-y-6 text-center sm:text-left">

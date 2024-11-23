@@ -3,23 +3,40 @@
 
 	const dispatch = createEventDispatcher();
 
-	export let value = '';
-	export let placeholder: string = '';
-	export let disabled: boolean = false;
-	export let label: string = null;
-	export let format_number: boolean = false;
-	export let type = 'text';
-	export let other = {};
-	export let dot = '';
-	export let percent: boolean = false;
-	export let force_number_keyboard: boolean = false;
 
 	let input_value = value;
 
-	let classes = '';
-	export { classes as class };
+	
 
-	export let name: string = label.replace(' ', '-').toLowerCase();
+	interface Props {
+		value?: string;
+		placeholder?: string;
+		disabled?: boolean;
+		label?: string;
+		format_number?: boolean;
+		type?: string;
+		other?: any;
+		dot?: string;
+		percent?: boolean;
+		force_number_keyboard?: boolean;
+		class?: string;
+		name?: string;
+	}
+
+	let {
+		value = $bindable(''),
+		placeholder = '',
+		disabled = false,
+		label = null,
+		format_number = false,
+		type = 'text',
+		other = {},
+		dot = '',
+		percent = false,
+		force_number_keyboard = false,
+		class: classes = '',
+		name = label.replace(' ', '-').toLowerCase()
+	}: Props = $props();
 
 	function handle_format(e) {
 		if (format_number && value !== '') {
@@ -43,7 +60,7 @@
 	{#if label}
 		<label for={name}>
 			{#if dot}
-				<span class="dot {dot}" />
+				<span class="dot {dot}"></span>
 			{/if}
 			<span>{label}</span>
 		</label>
@@ -58,8 +75,8 @@
 			{disabled}
 			title={label}
 			class="text-base font-sans w-full"
-			on:blur={handle_format}
-			on:input={() => dispatch('input')}
+			onblur={handle_format}
+			oninput={() => dispatch('input')}
 			{...other}
 			pattern="\d*"
 		/>

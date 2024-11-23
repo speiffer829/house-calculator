@@ -1,12 +1,18 @@
 <script lang="ts">
+	import { run } from 'svelte/legacy';
+
 	import 'chartist/dist/index.css';
 	import { PieChart } from 'chartist';
 	import { onMount } from 'svelte';
 	import type { ResultType } from './types';
 
 	let chart;
-	export let numberize, results: ResultType;
-	$: update_chart(results);
+	interface Props {
+		numberize: any;
+		results: ResultType;
+	}
+
+	let { numberize, results }: Props = $props();
 
 	function update_chart(results: ResultType) {
 		if (!chart) return;
@@ -60,9 +66,12 @@
 			}
 		);
 	});
+	run(() => {
+		update_chart(results);
+	});
 </script>
 
-<div id="chart" class="flex-1" />
+<div id="chart" class="flex-1"></div>
 
 <style lang="postcss">
 	#chart {
